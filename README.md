@@ -1,3 +1,9 @@
+### Update - This has been added to the official Spine Scripts repository:
+
+ https://github.com/EsotericSoftware/spine-scripts
+
+___
+
 # aseprite-to-spine 
 
 ## Lua Script for importing Aseprite projects into Spine

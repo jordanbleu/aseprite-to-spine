@@ -152,19 +152,19 @@ function restoreVisibilities(layers, visibilityStates)
 end
 
 -----------------------------------------------[[ Main Execution ]]-----------------------------------------------
-local activeSprite = app.activeSprite
+local sprite = app.sprite
 
-if (activeSprite == nil) then
+if (sprite == nil) then
     -- If user has no active sprite selected in the UI
     app.alert("Please click the sprite you'd like to export")
     return
-elseif (activeSprite.filename == "") then
+elseif (sprite.filename == "") then
     -- If the user has created a sprite, but never saved it
     app.alert("Please save the current sprite before running this script")
     return
 end
 
-local flattenedLayers = getLayers(activeSprite, {})
+local flattenedLayers = getLayers(sprite, {})
 
 if (containsDuplicates(flattenedLayers)) then
     return
@@ -175,7 +175,7 @@ local visibilities = captureVisibilityStates(flattenedLayers)
 
 -- Saves each sprite layer as a separate .png under the 'images' subdirectory
 -- and write out the json file for importing into spine.
-captureLayers(flattenedLayers, activeSprite, visibilities)
+captureLayers(flattenedLayers, sprite, visibilities)
 
 -- Restore the layer's visibilities to how they were before
 restoreVisibilities(flattenedLayers, visibilities)
